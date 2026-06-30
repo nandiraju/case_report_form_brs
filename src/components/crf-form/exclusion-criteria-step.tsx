@@ -84,7 +84,7 @@ export function ExclusionCriteriaStepPanel({ data, onChange }: ExclusionCriteria
       {/* Exclusion Checklist Table */}
       <div className="border border-zinc-300 dark:border-zinc-700 rounded-lg overflow-hidden bg-card text-card-foreground shadow-xs">
         {/* Table Header */}
-        <div className="grid grid-cols-[48px_1fr_80px_80px] bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-b border-zinc-300 dark:border-zinc-700 font-bold text-xs uppercase tracking-wider">
+        <div className="grid grid-cols-[48px_1fr_80px_80px] bg-[#f5f5f5] dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border-b border-zinc-300 dark:border-zinc-700 font-bold text-xs uppercase tracking-wider">
           <div className="p-3 text-center border-r border-zinc-300 dark:border-zinc-700">No</div>
           <div className="p-3 border-r border-zinc-300 dark:border-zinc-700">Exclusion Criteria</div>
           <div className="p-3 text-center border-r border-zinc-300 dark:border-zinc-700">Yes</div>

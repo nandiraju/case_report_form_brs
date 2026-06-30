@@ -52,7 +52,7 @@ export function InvestigatorDeclarationStepPanel({ data, onChange }: Investigato
       {/* Declaration Card */}
       <div className="border border-zinc-300 dark:border-zinc-700 rounded-lg overflow-hidden bg-card text-card-foreground shadow-xs">
         {/* Card Title */}
-        <div className="bg-zinc-200 dark:bg-zinc-800 px-4 py-2.5 font-bold text-sm text-zinc-800 dark:text-zinc-200 border-b border-zinc-300 dark:border-zinc-700">
+        <div className="bg-[#f5f5f5] dark:bg-zinc-800 px-4 py-2.5 font-bold text-sm text-zinc-800 dark:text-zinc-200 border-b border-zinc-300 dark:border-zinc-700">
           INVESTIGATOR DECLARATION:
         </div>
 

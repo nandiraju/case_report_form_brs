@@ -689,7 +689,7 @@ export default function Home() {
         </div>
 
         {/* Content Area */}
-        <main className="flex-1 flex flex-col justify-between overflow-hidden bg-background/60">
+        <main className="flex-1 flex flex-col justify-between overflow-hidden bg-[#F8F8FF] dark:bg-background/60">
           {/* Scrollable container for forms */}
           <div className="flex-1 overflow-y-auto py-4 sm:py-6 px-2 sm:px-8 flex justify-center items-start">
             <div ref={containerRef} className="w-full max-w-4xl flex justify-center">

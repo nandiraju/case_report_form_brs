@@ -47,7 +47,7 @@ export function CRFHeader({ sidebarPosition = "left", onToggleSidebarPosition, o
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-[#f5f5f5]/95 dark:bg-background/95 backdrop-blur-md">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         {/* Left Side: Branding & Form Name */}
         <div className="flex items-center gap-2 sm:gap-3">
