@@ -165,6 +165,9 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
+  const mobileWrapperRef = useRef<HTMLDivElement>(null);
+  const mobileBackdropRef = useRef<HTMLDivElement>(null);
+  const mobileDrawerRef = useRef<HTMLDivElement>(null);
 
   // Toast notifications state
   const [toast, setToast] = useState<{ message: string; type: "success" | "info" | "error" } | null>(null);
@@ -176,6 +179,53 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, [toast]);
+
+  // GSAP animation for mobile drawer menu
+  useEffect(() => {
+    const wrapper = mobileWrapperRef.current;
+    const backdrop = mobileBackdropRef.current;
+    const drawer = mobileDrawerRef.current;
+
+    if (!wrapper || !backdrop || !drawer) return;
+
+    if (isMobileMenuOpen) {
+      gsap.killTweensOf([wrapper, backdrop, drawer]);
+      
+      // Reset state to visible & active
+      gsap.set(wrapper, { pointerEvents: "auto", visibility: "visible" });
+      
+      // Fade in backdrop
+      gsap.fromTo(backdrop, 
+        { opacity: 0 }, 
+        { opacity: 1, duration: 0.25, ease: "power2.out" }
+      );
+      
+      // Slide in drawer
+      gsap.fromTo(drawer,
+        { x: sidebarPosition === "right" ? 320 : -320 },
+        { x: 0, duration: 0.3, ease: "power3.out" }
+      );
+    } else {
+      gsap.killTweensOf([wrapper, backdrop, drawer]);
+
+      // Fade out backdrop
+      gsap.to(backdrop, { 
+        opacity: 0, 
+        duration: 0.2, 
+        ease: "power2.in" 
+      });
+
+      // Slide out drawer
+      gsap.to(drawer, {
+        x: sidebarPosition === "right" ? 320 : -320,
+        duration: 0.25,
+        ease: "power3.in",
+        onComplete: () => {
+          gsap.set(wrapper, { pointerEvents: "none", visibility: "hidden" });
+        }
+      });
+    }
+  }, [isMobileMenuOpen, sidebarPosition]);
 
   const showNotification = (message: string, type: "success" | "info" | "error" = "success") => {
     setToast({ message, type });
@@ -593,43 +643,50 @@ export default function Home() {
           />
         </div>
 
-        {/* Sidebar (Mobile Overlay) */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-50 flex lg:hidden">
-            {/* Backdrop */}
-            <div 
-              className="fixed inset-0 bg-black/45 backdrop-blur-xs transition-opacity" 
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            {/* Sidebar drawer content */}
-            <div className={`relative w-80 max-w-xs h-full bg-background flex flex-col z-50 shadow-2xl transition-transform duration-200 ${
+        {/* Sidebar (Mobile Overlay with GSAP) */}
+        <div 
+          ref={mobileWrapperRef} 
+          className="fixed inset-0 z-50 flex lg:hidden" 
+          style={{ pointerEvents: "none", visibility: "hidden" }}
+        >
+          {/* Backdrop */}
+          <div 
+            ref={mobileBackdropRef}
+            className="fixed inset-0 bg-black/45 backdrop-blur-xs opacity-0" 
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          {/* Sidebar drawer content */}
+          <div 
+            ref={mobileDrawerRef} 
+            className={`relative w-80 max-w-xs h-full bg-background flex flex-col z-50 shadow-2xl ${
               sidebarPosition === "right" ? "ml-auto" : "mr-auto"
-            }`}>
-              <div className="p-4 border-b border-border flex items-center justify-between bg-zinc-50 dark:bg-zinc-900/40">
-                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">CRF NAVIGATION</span>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="h-8 w-8 p-0 rounded-lg cursor-pointer"
-                >
-                  ✕
-                </Button>
-              </div>
-              <div className="flex-1 overflow-y-auto flex">
-                <CRFSidebar
-                  activeStep={activeStep}
-                  completedSteps={completedSteps}
-                  onStepClick={(step) => {
-                    setActiveStep(step);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  position={sidebarPosition}
-                />
-              </div>
+            }`}
+            style={{ transform: "translateX(0px)" }}
+          >
+            <div className="p-4 border-b border-border flex items-center justify-between bg-zinc-50 dark:bg-zinc-900/40">
+              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">CRF NAVIGATION</span>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="h-8 w-8 p-0 rounded-lg cursor-pointer"
+              >
+                ✕
+              </Button>
+            </div>
+            <div className="flex-1 overflow-y-auto flex">
+              <CRFSidebar
+                activeStep={activeStep}
+                completedSteps={completedSteps}
+                onStepClick={(step) => {
+                  setActiveStep(step);
+                  setIsMobileMenuOpen(false);
+                }}
+                position={sidebarPosition}
+              />
             </div>
           </div>
-        )}
+        </div>
 
         {/* Content Area */}
         <main className="flex-1 flex flex-col justify-between overflow-hidden bg-background/60">

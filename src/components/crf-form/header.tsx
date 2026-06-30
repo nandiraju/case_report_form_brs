@@ -80,7 +80,7 @@ export function CRFHeader({ sidebarPosition = "left", onToggleSidebarPosition, o
               variant="ghost"
               size="icon"
               onClick={onToggleSidebarPosition}
-              className="h-9 w-9 rounded-lg cursor-pointer text-muted-foreground hover:text-foreground"
+              className="h-9 w-9 rounded-lg cursor-pointer text-muted-foreground hover:text-foreground hidden lg:inline-flex"
               title={sidebarPosition === "left" ? "Move sidebar to right" : "Move sidebar to left"}
             >
               {sidebarPosition === "left" ? (
