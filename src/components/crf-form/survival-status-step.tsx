@@ -64,7 +64,7 @@ export function SurvivalStatusStepPanel({ data, onChange, diagnosisDate }: Survi
   const showDeathDetails = data.isAlive === "No";
 
   return (
-    <div className="flex flex-col gap-6 max-w-4xl p-6 w-full animate-in fade-in duration-200">
+    <div className="flex flex-col gap-6 max-w-4xl p-3 sm:p-6 w-full animate-in fade-in duration-200">
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-border pb-4">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-950/20 dark:text-blue-400">

@@ -89,7 +89,7 @@ export function ReviewStepPanel({
   };
 
   return (
-    <div className="flex flex-col gap-8 max-w-4xl p-6 w-full animate-in fade-in duration-200">
+    <div className="flex flex-col gap-8 max-w-4xl p-3 sm:p-6 w-full animate-in fade-in duration-200">
       {/* Header */}
       {!hideEditLinks && (
         <div className="flex items-center justify-between border-b border-border pb-4">

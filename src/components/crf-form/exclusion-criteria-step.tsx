@@ -69,7 +69,7 @@ export function ExclusionCriteriaStepPanel({ data, onChange }: ExclusionCriteria
   ];
 
   return (
-    <div className="flex flex-col gap-6 max-w-4xl p-6 w-full animate-in fade-in duration-200">
+    <div className="flex flex-col gap-6 max-w-4xl p-3 sm:p-6 w-full animate-in fade-in duration-200">
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-border pb-4">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 text-red-700 dark:bg-red-950/20 dark:text-red-400">
