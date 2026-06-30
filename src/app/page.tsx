@@ -162,6 +162,7 @@ export default function Home() {
   const [showDiscardDialog, setShowDiscardDialog] = useState(false);
   const [sidebarPosition, setSidebarPosition] = useState<"left" | "right">("left");
   const [isPrintMode, setIsPrintMode] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -577,29 +578,70 @@ export default function Home() {
       <CRFHeader
         sidebarPosition={sidebarPosition}
         onToggleSidebarPosition={() => setSidebarPosition((p) => p === "left" ? "right" : "left")}
+        onToggleMobileMenu={() => setIsMobileMenuOpen(true)}
       />
 
       {/* Main Panel Content */}
       <div className={`flex flex-1 overflow-hidden ${sidebarPosition === "right" ? "flex-row-reverse" : ""}`}>
-        {/* Sidebar */}
-        <CRFSidebar
-          activeStep={activeStep}
-          completedSteps={completedSteps}
-          onStepClick={setActiveStep}
-          position={sidebarPosition}
-        />
+        {/* Sidebar (Desktop) */}
+        <div className="hidden lg:flex shrink-0">
+          <CRFSidebar
+            activeStep={activeStep}
+            completedSteps={completedSteps}
+            onStepClick={setActiveStep}
+            position={sidebarPosition}
+          />
+        </div>
+
+        {/* Sidebar (Mobile Overlay) */}
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 z-50 flex lg:hidden">
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/45 backdrop-blur-xs transition-opacity" 
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            {/* Sidebar drawer content */}
+            <div className={`relative w-80 max-w-xs h-full bg-background flex flex-col z-50 shadow-2xl transition-transform duration-200 ${
+              sidebarPosition === "right" ? "ml-auto" : "mr-auto"
+            }`}>
+              <div className="p-4 border-b border-border flex items-center justify-between bg-zinc-50 dark:bg-zinc-900/40">
+                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">CRF NAVIGATION</span>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="h-8 w-8 p-0 rounded-lg cursor-pointer"
+                >
+                  ✕
+                </Button>
+              </div>
+              <div className="flex-1 overflow-y-auto flex">
+                <CRFSidebar
+                  activeStep={activeStep}
+                  completedSteps={completedSteps}
+                  onStepClick={(step) => {
+                    setActiveStep(step);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  position={sidebarPosition}
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Content Area */}
         <main className="flex-1 flex flex-col justify-between overflow-hidden bg-background/60">
           {/* Scrollable container for forms */}
-          <div className="flex-1 overflow-y-auto py-6 px-8 flex justify-center items-start">
+          <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-8 flex justify-center items-start">
             <div ref={containerRef} className="w-full max-w-4xl flex justify-center">
               {renderActiveStepPanel(displayStep)}
             </div>
           </div>
 
           {/* Footer Actions */}
-          <footer className="border-t border-border bg-background p-4 flex items-center justify-between px-8 shrink-0 z-45 shadow-md">
+          <footer className="border-t border-border bg-background p-4 flex items-center justify-between px-4 sm:px-8 shrink-0 z-45 shadow-md">
             <div>
               <Button
                 variant="outline"

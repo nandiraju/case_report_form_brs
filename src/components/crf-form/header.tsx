@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Moon, Sun, PanelLeft, PanelRight } from "lucide-react";
+import { Moon, Sun, PanelLeft, PanelRight, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface CRFHeaderProps {
   sidebarPosition?: "left" | "right";
   onToggleSidebarPosition?: () => void;
+  onToggleMobileMenu?: () => void;
 }
 
-export function CRFHeader({ sidebarPosition = "left", onToggleSidebarPosition }: CRFHeaderProps) {
+export function CRFHeader({ sidebarPosition = "left", onToggleSidebarPosition, onToggleMobileMenu }: CRFHeaderProps) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   // Initialize theme from document on mount
@@ -49,7 +50,18 @@ export function CRFHeader({ sidebarPosition = "left", onToggleSidebarPosition }:
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
       <div className="flex h-16 items-center justify-between px-6 relative">
         {/* Left Side: Branding */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          {onToggleMobileMenu && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onToggleMobileMenu}
+              className="h-9 w-9 rounded-lg lg:hidden cursor-pointer text-muted-foreground hover:text-foreground mr-1"
+              title="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          )}
           <img
             src={theme === "dark" ? "/logo-sphere.png" : "/logo.png"}
             alt="1Cell.Ai Logo"
