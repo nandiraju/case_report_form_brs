@@ -48,15 +48,15 @@ export function CRFHeader({ sidebarPosition = "left", onToggleSidebarPosition, o
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
-      <div className="flex h-16 items-center justify-between px-6 relative">
-        {/* Left Side: Branding */}
-        <div className="flex items-center gap-2">
+      <div className="flex h-16 items-center justify-between px-4 sm:px-6">
+        {/* Left Side: Branding & Form Name */}
+        <div className="flex items-center gap-2 sm:gap-3">
           {onToggleMobileMenu && (
             <Button
               variant="ghost"
               size="icon"
               onClick={onToggleMobileMenu}
-              className="h-9 w-9 rounded-lg lg:hidden cursor-pointer text-muted-foreground hover:text-foreground mr-1"
+              className="h-9 w-9 rounded-lg lg:hidden cursor-pointer text-muted-foreground hover:text-foreground"
               title="Open menu"
             >
               <Menu className="h-5 w-5" />
@@ -65,17 +65,15 @@ export function CRFHeader({ sidebarPosition = "left", onToggleSidebarPosition, o
           <img
             src={theme === "dark" ? "/logo-sphere.png" : "/logo.png"}
             alt="1Cell.Ai Logo"
-            className="h-10 w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
+          <span className="text-[10px] sm:text-xs font-bold tracking-wider text-muted-foreground uppercase select-none border-l border-border/80 pl-2.5 sm:pl-3 ml-0.5 sm:ml-1 hidden min-[360px]:inline-block">
+            Case Report Form
+          </span>
         </div>
 
-        {/* Center Title */}
-        <h1 className="absolute left-1/2 -translate-x-1/2 text-sm font-bold tracking-widest text-foreground/80 uppercase select-none">
-          Case Report Form
-        </h1>
-
-        {/* Right Side: Controls */}
-        <div className="flex items-center gap-1.5">
+        {/* Right Side: Controls (Packed Tight) */}
+        <div className="flex items-center gap-1 sm:gap-1.5">
           {/* Sidebar Position Toggle */}
           {onToggleSidebarPosition && (
             <Button
