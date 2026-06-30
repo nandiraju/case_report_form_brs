@@ -235,7 +235,7 @@ export function TreatmentAdministeredStepPanel({ data, onChange, diagnosisDate }
             </div>
 
             {/* Table */}
-            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-background">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-x-auto bg-background">
               <Table>
                 <TableHeader className="bg-muted/30">
                   <TableRow>
@@ -370,7 +370,7 @@ export function TreatmentAdministeredStepPanel({ data, onChange, diagnosisDate }
             </div>
 
             {/* Table */}
-            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-background">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-x-auto bg-background">
               <Table>
                 <TableHeader className="bg-muted/30">
                   <TableRow>
@@ -505,7 +505,7 @@ export function TreatmentAdministeredStepPanel({ data, onChange, diagnosisDate }
             </div>
 
             {/* Table */}
-            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-background">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-x-auto bg-background">
               <Table>
                 <TableHeader className="bg-muted/30">
                   <TableRow>
@@ -651,7 +651,7 @@ export function TreatmentAdministeredStepPanel({ data, onChange, diagnosisDate }
             </div>
 
             {/* Table */}
-            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-background">
+            <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-x-auto bg-background">
               <Table>
                 <TableHeader className="bg-muted/30">
                   <TableRow>

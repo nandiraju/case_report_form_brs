@@ -241,7 +241,7 @@ export function ReviewStepPanel({
             {treatment.types.chemo && treatment.chemoRows.length > 0 && (
               <div className="mt-2">
                 <span className="block text-muted-foreground font-semibold mb-1 text-[10px] uppercase tracking-wider">Chemotherapy Detail</span>
-                <div className="border border-border rounded overflow-hidden">
+                <div className="border border-border rounded overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-zinc-100 dark:bg-zinc-800/60 font-semibold border-b border-border text-[10px]">
@@ -272,7 +272,7 @@ export function ReviewStepPanel({
             {treatment.types.hormonal && treatment.hormonalRows.length > 0 && (
               <div className="mt-2">
                 <span className="block text-muted-foreground font-semibold mb-1 text-[10px] uppercase tracking-wider">Hormonal Therapy Detail</span>
-                <div className="border border-border rounded overflow-hidden">
+                <div className="border border-border rounded overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-zinc-100 dark:bg-zinc-800/60 font-semibold border-b border-border text-[10px]">
@@ -303,7 +303,7 @@ export function ReviewStepPanel({
             {treatment.types.radio && treatment.radioRows.length > 0 && (
               <div className="mt-2">
                 <span className="block text-muted-foreground font-semibold mb-1 text-[10px] uppercase tracking-wider">Radiotherapy Detail</span>
-                <div className="border border-border rounded overflow-hidden">
+                <div className="border border-border rounded overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-zinc-100 dark:bg-zinc-800/60 font-semibold border-b border-border text-[10px]">
@@ -334,7 +334,7 @@ export function ReviewStepPanel({
             {treatment.types.surgery && treatment.surgeryRows.length > 0 && (
               <div className="mt-2">
                 <span className="block text-muted-foreground font-semibold mb-1 text-[10px] uppercase tracking-wider">Surgery Detail</span>
-                <div className="border border-border rounded overflow-hidden">
+                <div className="border border-border rounded overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
                       <tr className="bg-zinc-100 dark:bg-zinc-800/60 font-semibold border-b border-border text-[10px]">
@@ -432,7 +432,7 @@ export function ReviewStepPanel({
         <div className="bg-card text-card-foreground border border-zinc-200 dark:border-zinc-800 rounded-lg p-5 shadow-xs">
           {renderSectionHeader("6. Disease Progression", 6, LineChart)}
           {progression.length > 0 ? (
-            <div className="border border-border rounded overflow-hidden text-xs">
+            <div className="border border-border rounded overflow-x-auto text-xs">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-zinc-100 dark:bg-zinc-800/60 font-semibold border-b border-border text-[10px]">

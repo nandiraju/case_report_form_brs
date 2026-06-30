@@ -78,7 +78,7 @@ export function DiseaseProgressionStepPanel({ data, onChange }: DiseaseProgressi
 
         {/* Table Content */}
         <div className="p-4 flex flex-col gap-4">
-          <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden bg-background">
+          <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-x-auto bg-background">
             <Table>
               <TableHeader className="bg-muted/30">
                 <TableRow>
