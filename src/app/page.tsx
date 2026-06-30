@@ -532,7 +532,6 @@ export default function Home() {
         <div className="w-full max-w-4xl flex items-center justify-between mb-8 pb-4 border-b border-zinc-200 print:hidden">
           <div className="flex items-center gap-2">
             <img src="/logo.png" alt="1Cell.Ai Logo" className="h-8 w-auto object-contain" />
-            <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest ml-2">Print Preview Mode</span>
           </div>
           <div className="flex gap-3">
             <Button

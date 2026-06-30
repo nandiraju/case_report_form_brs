@@ -91,27 +91,29 @@ export function ReviewStepPanel({
   return (
     <div className="flex flex-col gap-8 max-w-4xl p-6 w-full animate-in fade-in duration-200">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-border pb-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-400">
-            <ClipboardCheck className="h-5 w-5" />
+      {!hideEditLinks && (
+        <div className="flex items-center justify-between border-b border-border pb-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-400">
+              <ClipboardCheck className="h-5 w-5" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-foreground">10. Final Review & Submit</h2>
+              <p className="text-xs text-muted-foreground">Verify all Case Report Form sections prior to final submission</p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-xl font-bold text-foreground">10. Final Review & Submit</h2>
-            <p className="text-xs text-muted-foreground">Verify all Case Report Form sections prior to final submission</p>
-          </div>
-        </div>
 
-        {onPrintClick && (
-          <button
-            onClick={onPrintClick}
-            className="flex items-center gap-2 px-3 py-1.5 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-foreground text-xs font-semibold rounded-lg shadow-xs cursor-pointer select-none transition-colors duration-150"
-          >
-            <Printer className="h-4 w-4" />
-            Print / PDF View
-          </button>
-        )}
-      </div>
+          {onPrintClick && (
+            <button
+              onClick={onPrintClick}
+              className="flex items-center gap-2 px-3 py-1.5 bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-foreground text-xs font-semibold rounded-lg shadow-xs cursor-pointer select-none transition-colors duration-150"
+            >
+              <Printer className="h-4 w-4" />
+              Print / PDF View
+            </button>
+          )}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 gap-8">
         {/* Step 1: Demographics */}
