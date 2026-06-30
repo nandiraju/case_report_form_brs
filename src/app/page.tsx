@@ -646,31 +646,35 @@ export default function Home() {
               <Button
                 variant="outline"
                 onClick={handleDiscardChanges}
-                className="flex items-center gap-1.5 text-xs font-semibold h-9 rounded-lg border-border hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30 cursor-pointer"
+                className="flex items-center gap-1.5 text-xs font-semibold h-9 rounded-lg border-border hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30 cursor-pointer px-3 sm:px-4"
+                title="Discard Changes"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
-                Discard Changes
+                <span className="hidden sm:inline">Discard Changes</span>
               </Button>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               {activeStep > 1 && (
                 <Button
                   variant="outline"
                   onClick={handlePrevStep}
-                  className="flex items-center gap-1 text-xs font-semibold h-9 rounded-lg px-4 border-border hover:bg-muted/40 cursor-pointer"
+                  className="flex items-center gap-1 text-xs font-semibold h-9 rounded-lg px-3 sm:px-4 border-border hover:bg-muted/40 cursor-pointer"
+                  title="Previous Step"
                 >
-                  <ChevronLeft className="h-3.5 w-3.5 mt-0.5 mr-0.5" />
-                  Previous Step
+                  <ChevronLeft className="h-3.5 w-3.5 mt-0.5" />
+                  <span className="hidden sm:inline">Previous Step</span>
                 </Button>
               )}
 
 
               <Button
                 onClick={handleNextStep}
-                className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1 text-xs font-semibold h-9 rounded-lg px-4 shadow-sm cursor-pointer"
+                className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1 text-xs font-semibold h-9 rounded-lg px-3 sm:px-4 shadow-sm cursor-pointer"
+                title={activeStep === 10 ? "Submit CRF" : "Next Step"}
               >
-                {activeStep === 10 ? "Submit CRF" : "Next Step"}
+                <span className="hidden sm:inline">{activeStep === 10 ? "Submit CRF" : "Next Step"}</span>
+                <span className="inline sm:hidden">{activeStep === 10 ? "Submit" : "Next"}</span>
                 <ChevronRight className="h-3.5 w-3.5 mt-0.5 ml-0.5" />
               </Button>
             </div>
